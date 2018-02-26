@@ -7,15 +7,15 @@
 console.log("START");
 const Alexa = require("alexa-sdk");
 
-const USER_ID = "amzn1.ask.skill.0ec74ce3-424f-4617-9e69-853526c91e5c";
-const APP_ID = "0ec74ce3-424f-4617-9e69-853526c91e5c";
+const USER_ID = "amzn1.ask.skill.dc4e88a8-9bee-4630-8dbd-f3e96d5e95ab";
+const APP_ID = "amzn1.ask.skill.dc4e88a8-9bee-4630-8dbd-f3e96d5e95ab";
 
 const languageStrings = {
   en: {
     translation: {
-      SKILL_NAME: "Wala Alarm",
+      SKILL_NAME: "Snooze Bot",
       STOP_MESSAGE: "Goodbye!",
-      WELCOME_MESSAGE: "Welcome to Wala Alarm.",
+      WELCOME_MESSAGE: "Welcome to SnoozABot.",
       WELCOME_REPROMPT: "What did you say?"
     }
   }
@@ -80,10 +80,10 @@ exports.handler = function(event, context) {
       " context: " +
       JSON.stringify(context)
   );
-  const alexa = Alexa.handler(returnDefaultEvent, context);
+  const alexa = Alexa.handler(returnDefaultEvent(event), context);
   alexa.appId = APP_ID;
   // To enable string internationalization (i18n) features, set a resources object.
-  // alexa.resources = languageStrings;
+  alexa.resources = languageStrings;
   alexa.registerHandlers(handlers);
   console.log("EXECUTE");
   alexa.execute();
